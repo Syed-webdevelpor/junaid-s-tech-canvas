@@ -3,10 +3,10 @@ import ScrollReveal from "./ScrollReveal";
 import { Github, Linkedin, Twitter, Mail, Send } from "lucide-react";
 
 const socials = [
-  { icon: Github, label: "GitHub", href: "https://github.com" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
+  { icon: Github, label: "GitHub", href: "https://github.com/Syed-webdevelpor" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/syed-junaid-56391a234/" },
   { icon: Twitter, label: "Twitter", href: "https://twitter.com" },
-  { icon: Mail, label: "Email", href: "mailto:hello@example.com" },
+  { icon: Mail, label: "Email", href: "mailto:junaidsherazi535@gmail.com" },
 ];
 
 const Contact = () => {
@@ -20,12 +20,26 @@ const Contact = () => {
 
     setStatus("sending");
 
-    // For now, simulate sending — will be replaced with edge function
     try {
-      await new Promise((r) => setTimeout(r, 1000));
-      setStatus("sent");
-      setForm({ name: "", email: "", message: "" });
-      setTimeout(() => setStatus("idle"), 3000);
+      const response = await fetch("https://portfolio-server-one-flax.vercel.app/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: form.email,
+          name: form.name,
+          details: form.message,
+        }),
+      });
+
+      if (response.ok) {
+        setStatus("sent");
+        setForm({ name: "", email: "", message: "" });
+        setTimeout(() => setStatus("idle"), 3000);
+      } else {
+        setStatus("error");
+      }
     } catch {
       setStatus("error");
     }
