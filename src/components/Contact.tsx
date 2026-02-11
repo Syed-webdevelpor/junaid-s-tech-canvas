@@ -1,11 +1,11 @@
 import { useState, FormEvent } from "react";
 import ScrollReveal from "./ScrollReveal";
-import { Github, Linkedin, Twitter, Mail, Send } from "lucide-react";
+import { Github, Linkedin, ExternalLink, Mail, Send } from "lucide-react";
 
 const socials = [
   { icon: Github, label: "GitHub", href: "https://github.com/Syed-webdevelpor" },
   { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/syed-junaid-56391a234/" },
-  { icon: Twitter, label: "Twitter", href: "https://twitter.com" },
+  { icon: ExternalLink, label: "Fiverr", href: "https://www.fiverr.com/s/qDX7b9Z" },
   { icon: Mail, label: "Email", href: "mailto:junaidsherazi535@gmail.com" },
 ];
 
